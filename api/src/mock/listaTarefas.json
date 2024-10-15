@@ -1,0 +1,16 @@
+{
+    "tarefas": [
+        {
+            "id": 1,
+            "descricao": "Fazer uma api funcional",
+            "finalizada": true,
+            "criadaEm": "2024-10-12T12:13:36.865Z"
+        },
+        {
+            "id": 2,
+            "descricao": "Fazer as outras rotas (socorro)",
+            "finalizada": false,
+            "criadaEm": "2024-10-15T12:13:36.865Z"
+        }
+    ]
+}
