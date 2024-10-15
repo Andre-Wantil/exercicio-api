@@ -58,6 +58,24 @@ class TarefasController {
             next(erro);
         }
     }
+
+    update(req, res, next) {
+        try {
+            const id = parseInt(req.params.id);
+
+            const tarefa = tarefasService.buscarPeloId(id);
+            if (!tarefa) {
+                errorNotFound(res, "Tarefa não encontrada");
+            }
+
+            tarefasService.atualizar(id, req.body);
+            return res
+            .status(200)
+            .json({ mensagem: "Tarefa atualizada com sucesso!", tarefa });
+        } catch (erro) {
+            next(erro);
+        }
+    }
 }
 
 module.exports = new TarefasController();

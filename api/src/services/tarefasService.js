@@ -20,12 +20,20 @@ class TarefasService {
         })
     }
 
+    buscarPeloId(id) {
+        return tarefasRepository.buscarPeloId(id);
+    }
+
     buscarPelaData(data) {
         return tarefasRepository.encontrarPelaData(data)
     }
 
     adicionar(tarefa) {
         return tarefasRepository.adicionar(tarefa);
+    }
+
+    atualizar(id, descricaoAtualizada) {
+        return tarefasRepository.atualizar(id, descricaoAtualizada);
     }
 }
 

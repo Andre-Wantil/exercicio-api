@@ -13,6 +13,7 @@ router.get("/tarefas", tarefasController.index);
 router.get("/tarefas/:descricao", tarefasController.index);
 router.get("/tarefas/data/:data", tarefasController.show);
 router.post("/tarefas", tarefasController.store);
+router.put("/tarefas/:id", tarefasController.update);
 
 
 module.exports = router;
