@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
 router.get("/tarefas", tarefasController.index);
 router.get("/tarefas/:descricao", tarefasController.index);
 router.get("/tarefas/data/:data", tarefasController.show);
+router.post("/tarefas", tarefasController.store);
 
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const errorNotFound = require("../utils/erroNotFound");
 const tarefasService = require("../services/tarefasService");
+const Tarefa = require("../models/Tarefa");
 
 class TarefasController {
     index(req, res, next) {
@@ -32,6 +33,27 @@ class TarefasController {
             } else {
                 errorNotFound(res, "Data não encontrada");
             }
+        } catch (erro) {
+            next(erro);
+        }
+    }
+
+    store(req, res, next) {
+        try {
+            const { descricao } = req.body;
+
+            if (!descricao) {
+                return next(
+                    new Error(
+                        "A descrição da tarefa é obrigatória."
+                    )
+                )
+            }
+
+            const novaTarefa = new Tarefa(descricao);
+
+            tarefasService.adicionar(novaTarefa);
+            return res.status(201).json(novaTarefa);
         } catch (erro) {
             next(erro);
         }

@@ -23,6 +23,10 @@ class TarefasService {
     buscarPelaData(data) {
         return tarefasRepository.encontrarPelaData(data)
     }
+
+    adicionar(tarefa) {
+        return tarefasRepository.adicionar(tarefa);
+    }
 }
 
 module.exports = new TarefasService();
