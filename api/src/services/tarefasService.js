@@ -35,6 +35,10 @@ class TarefasService {
     atualizar(id, descricaoAtualizada) {
         return tarefasRepository.atualizar(id, descricaoAtualizada);
     }
+
+    excluir(id) {
+        return tarefasRepository.excluir(id);
+    }
 }
 
 module.exports = new TarefasService();

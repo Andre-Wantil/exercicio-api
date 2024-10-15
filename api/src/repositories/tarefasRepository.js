@@ -22,6 +22,12 @@ class TarefasRepository {
         const tarefa = this.buscarPeloId(id);
         Object.assign(tarefa, descricaoAtualizada);
     }
+
+    excluir(id) {
+        const indiceDaTarefa = tarefas.findIndex((t) => t.id === id);
+
+        return tarefas.splice(indiceDaTarefa, 1);
+    }
 }
 
 module.exports = new TarefasRepository();

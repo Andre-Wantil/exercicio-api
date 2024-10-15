@@ -5,7 +5,7 @@ class Tarefa {
     constructor(descricao) {
         this.id = gerarIdUnico(tarefas);
         this.descricao = descricao;
-        this.finalizado = false;
+        this.finalizada = false;
         this.criadaEm = new Date();
     }
 }

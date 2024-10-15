@@ -21,7 +21,7 @@ class TarefasController {
     show(req, res, next) {
         try {
             const dataFiltro = req.params.data;
-            
+
             if (!dataFiltro) {
                 throw new Error("A data não foi informada");
             }
@@ -70,8 +70,39 @@ class TarefasController {
 
             tarefasService.atualizar(id, req.body);
             return res
+                .status(200)
+                .json({ menssage: "Tarefa atualizada com sucesso!", tarefa });
+        } catch (erro) {
+            next(erro);
+        }
+    }
+
+    finalizar(req, res, next) {
+        try {
+            const id = parseInt(req.params.id);
+
+            const tarefa = tarefasService.buscarPeloId(id)
+
+            tarefasService.atualizar(id, { "finalizada": true })
+
+            return res.status(200).json({ message: "Tarefa finalizada.", tarefa })
+        } catch (erro) {
+            next(erro)
+        }
+    }
+
+    delete(req, res, next) {
+        try {
+            const id = parseInt(req.params.id);
+            const tarefa = tarefasService.buscarPeloId(id);
+            if (!tarefa) {
+                errorNotFound(res, "Tarefa não encontrada");
+            }
+
+            tarefasService.excluir(id);
+            return res
             .status(200)
-            .json({ mensagem: "Tarefa atualizada com sucesso!", tarefa });
+            .json({ message: `Tarefa id:${id} removida com sucesso!`, tarefa });
         } catch (erro) {
             next(erro);
         }
